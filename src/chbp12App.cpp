@@ -63,6 +63,8 @@ void chbp12App::setup() {
     ofEnableNormalizedTexCoords();
     #endif
 
+    mCubeMapper.load("shaders/CubeMapping_vert.glsl", "shaders/CubeMapping_frag.glsl");
+    
 	img.loadImage("linzer.png");
 	
 	// OF_PRIMITIVE_TRIANGLES means every three vertices create a triangle
@@ -111,10 +113,17 @@ void chbp12App::setup() {
 	}
 	
 	vboMesh = mesh;
+    buildSphere();
+}
+
+void chbp12App::buildSphere()
+{
+//	mReflectiveSphereVbo
 }
 
 //--------------------------------------------------------------
-void chbp12App::update() {
+void chbp12App::update()
+{
 	
 }
 

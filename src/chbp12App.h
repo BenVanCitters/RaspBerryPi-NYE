@@ -25,10 +25,14 @@ public:
     void addTexCoords(ofMesh& mesh, ofVec2f a, ofVec2f b, ofVec2f c, ofVec2f d);
     ofVec3f getVertexFromImg(ofImage& img, int x, int y);
     
+    //my stuff
+    void buildSphere();
+    
     ofEasyCam cam;
     ofMesh mesh;
     ofVboMesh vboMesh;
     ofVbo mReflectiveSphereVbo;
+    ofShader mCubeMapper;
     
     ofImage img;
 };
