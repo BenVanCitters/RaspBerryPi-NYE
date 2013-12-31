@@ -113,6 +113,7 @@ void chbp12App::setup() {
 	}
 	
 	vboMesh = mesh;
+    mBlobMesh = BlobMesh(5);
     buildSphere();
 }
 
@@ -124,7 +125,7 @@ void chbp12App::buildSphere()
 //--------------------------------------------------------------
 void chbp12App::update()
 {
-	
+	mBlobMesh.update();
 }
 
 //--------------------------------------------------------------
@@ -133,33 +134,43 @@ void chbp12App::draw() {
 	cam.begin();
 	ofEnableDepthTest();
 	
-	ofRotateY(ofGetElapsedTimef() * 30); // slowly rotate the model
-	
-	ofScale(1, -1, 1); // make y point down
-	ofScale(.5, .5, .5); // make everything a bit smaller
-	
-	img.bind(); // bind the image to begin texture mapping
-	int n = 5; // make a 5x5 grid
-	ofVec2f spacing(img.getWidth(), img.getHeight()); // spacing between meshes
-	ofTranslate(-spacing.x * n / 2, -spacing.y * n / 2, 0); // center the grid
-	for(int i = 0; i < n; i++) { // loop through the rows
-		for(int j = 0; j < n; j++) { // loop through the columns
-			ofPushMatrix();
-			ofTranslate(i * spacing.x, j * spacing.y); // position the current mesh
-			ofTranslate(spacing.x / 2, spacing.y / 2); // center the mesh
-			if(ofGetKeyPressed()) {
-				vboMesh.draw(); // draw a vboMesh (faster) when a key is pressed
-			} else {
-				mesh.draw(); // draw an ofMesh (slower) when no key is pressed
-			}
-			ofPopMatrix();
-		}
-	}
-	img.unbind();
-	
+//	ofRotateY(ofGetElapsedTimef() * 30); // slowly rotate the model
+//	
+//	ofScale(1, -1, 1); // make y point down
+//	ofScale(.5, .5, .5); // make everything a bit smaller
+//	
+//	img.bind(); // bind the image to begin texture mapping
+//	int n = 5; // make a 5x5 grid
+//	ofVec2f spacing(img.getWidth(), img.getHeight()); // spacing between meshes
+//	ofTranslate(-spacing.x * n / 2, -spacing.y * n / 2, 0); // center the grid
+//	for(int i = 0; i < n; i++) { // loop through the rows
+//		for(int j = 0; j < n; j++) { // loop through the columns
+//			ofPushMatrix();
+//			ofTranslate(i * spacing.x, j * spacing.y); // position the current mesh
+//			ofTranslate(spacing.x / 2, spacing.y / 2); // center the mesh
+//			if(ofGetKeyPressed()) {
+//				vboMesh.draw(); // draw a vboMesh (faster) when a key is pressed
+//			} else {
+//				mesh.draw(); // draw an ofMesh (slower) when no key is pressed
+//			}
+//			ofPopMatrix();
+//		}
+//	}
+//	img.unbind();
+    
+	ofPushMatrix();
+//    ofTranslate(ofGetWindowWidth()/2,ofGetWindowHeight()/2,500*sin(ofGetElapsedTimef()));
+    ofRotateX(ofGetElapsedTimef());
+    ofRotateY(ofGetElapsedTimef());
+    ofRotateZ(ofGetElapsedTimef());
+    mBlobMesh.draw();
+    ofPopMatrix();
+    
 	ofDisableDepthTest();
 	cam.end();
 	
+    
+    
 	// draw the framerate in the top left corner
 	ofDrawBitmapString(ofToString((int) ofGetFrameRate()) + " fps", 10, 20);
 	ofDrawBitmapString("Hold any key for ofVboMesh mode.", 10, 40);

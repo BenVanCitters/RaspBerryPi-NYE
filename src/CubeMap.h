@@ -21,19 +21,19 @@ class CubeMap
     GLint mWidth = 512;
     GLint mHeight = 512;
 	unsigned int textureObject;
-//    std::vector<cinder::CaptureRef>		mCaptures;
-//    cinder::CaptureRef              mCapture;
-//    cinder::gl::TextureRef          mVideoTexture;
+    std::vector<ofVideoGrabber>		mCaptures;
+    ofVideoGrabber              mCapture;
+    ofTexture          mVideoTexture;
 public:
 	//this should be overloaded or generalized to allow different types of texture inputs
 	CubeMap( GLsizei texWidth,
             GLsizei texHeight,
-            const ci::Surface8u &pos_x,
-            const ci::Surface8u &pos_y,
-            const ci::Surface8u &pos_z,
-            const ci::Surface8u &neg_x,
-            const ci::Surface8u &neg_y,
-            const ci::Surface8u &neg_z );
+            const ofTexture &pos_x,
+            const ofTexture &pos_y,
+            const ofTexture &pos_z,
+            const ofTexture &neg_x,
+            const ofTexture &neg_y,
+            const ofTexture &neg_z );
 	void bind();
 	void bindMulti( int loc );
 	void unbind();
@@ -41,6 +41,6 @@ public:
 	static void enableFixedMapping();
 	static void disableFixedMapping();
 private:
-    void flipSurface(Surface8u & surf);
+    void flipSurface(ofTexture & surf);
     void setupCapture();
 };

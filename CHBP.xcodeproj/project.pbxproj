@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		847C52491872C908006714AF /* CubeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 847C52471872C908006714AF /* CubeMap.cpp */; };
+		2D849FFB18734AD40076B10F /* ofxCubeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D849FFA18734AD40076B10F /* ofxCubeMap.cpp */; };
+		2D849FFF18734D7A0076B10F /* BlobMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D849FFD18734D7A0076B10F /* BlobMesh.cpp */; };
+		2D84A00218734D9D0076B10F /* weight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D84A00018734D9D0076B10F /* weight.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -63,6 +65,14 @@
 /* Begin PBXFileReference section */
 		2D849FF11872ABA30076B10F /* CubeMapping_frag.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = CubeMapping_frag.glsl; sourceTree = "<group>"; };
 		2D849FF21872ABA30076B10F /* CubeMapping_vert.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = CubeMapping_vert.glsl; sourceTree = "<group>"; };
+		2D849FF818734AB90076B10F /* CubeMap.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = CubeMap.frag; sourceTree = "<group>"; };
+		2D849FF918734AB90076B10F /*  CubeMap.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = " CubeMap.vert"; sourceTree = "<group>"; };
+		2D849FFA18734AD40076B10F /* ofxCubeMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCubeMap.cpp; sourceTree = "<group>"; };
+		2D849FFC18734AEC0076B10F /* ofxCubeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCubeMap.h; sourceTree = "<group>"; };
+		2D849FFD18734D7A0076B10F /* BlobMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlobMesh.cpp; sourceTree = "<group>"; };
+		2D849FFE18734D7A0076B10F /* BlobMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobMesh.h; sourceTree = "<group>"; };
+		2D84A00018734D9D0076B10F /* weight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = weight.cpp; sourceTree = "<group>"; };
+		2D84A00118734D9D0076B10F /* weight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weight.h; sourceTree = "<group>"; };
 		847C52471872C908006714AF /* CubeMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeMap.cpp; sourceTree = "<group>"; };
 		847C52481872C908006714AF /* CubeMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeMap.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -122,6 +132,8 @@
 		2D849FF01872ABA30076B10F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				2D849FF818734AB90076B10F /* CubeMap.frag */,
+				2D849FF918734AB90076B10F /*  CubeMap.vert */,
 				2D849FF11872ABA30076B10F /* CubeMapping_frag.glsl */,
 				2D849FF21872ABA30076B10F /* CubeMapping_vert.glsl */,
 			);
@@ -200,11 +212,17 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2D84A00018734D9D0076B10F /* weight.cpp */,
+				2D84A00118734D9D0076B10F /* weight.h */,
+				2D849FFD18734D7A0076B10F /* BlobMesh.cpp */,
+				2D849FFE18734D7A0076B10F /* BlobMesh.h */,
 				847C52471872C908006714AF /* CubeMap.cpp */,
 				847C52481872C908006714AF /* CubeMap.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* chbp12App.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* chbp12App.h */,
+				2D849FFA18734AD40076B10F /* ofxCubeMap.cpp */,
+				2D849FFC18734AEC0076B10F /* ofxCubeMap.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -306,8 +324,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				2D849FFF18734D7A0076B10F /* BlobMesh.cpp in Sources */,
+				2D849FFB18734AD40076B10F /* ofxCubeMap.cpp in Sources */,
+				2D84A00218734D9D0076B10F /* weight.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* chbp12App.cpp in Sources */,
-				847C52491872C908006714AF /* CubeMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

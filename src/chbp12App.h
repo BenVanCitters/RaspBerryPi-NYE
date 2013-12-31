@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "BlobMesh.h"
 
 class chbp12App : public ofBaseApp {
 public:
@@ -33,6 +34,6 @@ public:
     ofVboMesh vboMesh;
     ofVbo mReflectiveSphereVbo;
     ofShader mCubeMapper;
-    
+    BlobMesh mBlobMesh;
     ofImage img;
 };

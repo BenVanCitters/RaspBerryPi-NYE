@@ -17,19 +17,18 @@
 
 //using namespace ci;
 //using namespace ci::app;
-using namespace std;
+//using namespace std;
 
-using ci::Surface8u;
 //using boost::shared_ptr;
 
 CubeMap::CubeMap( GLsizei texWidth,
                  GLsizei texHeight,
-                 const Surface8u &pos_x,
-                 const Surface8u &pos_y,
-                 const Surface8u &pos_z,
-                 const Surface8u &neg_x,
-                 const Surface8u &neg_y,
-                 const Surface8u &neg_z )
+                 const ofTexture &pos_x,
+                 const ofTexture &pos_y,
+                 const ofTexture &pos_z,
+                 const ofTexture &neg_x,
+                 const ofTexture &neg_y,
+                 const ofTexture &neg_z )
 {
     mWidth = texWidth;
     mHeight = texHeight;
@@ -40,12 +39,13 @@ CubeMap::CubeMap( GLsizei texWidth,
 	glGenTextures(1, &textureObject);
 	glBindTexture(GL_TEXTURE_CUBE_MAP_ARB, textureObject);
 	//assign the images to positions
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pos_x.getData());
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, neg_x.getData());
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pos_y.getData());
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, neg_y.getData());
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pos_z.getData());
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, neg_z.getData());
+
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pos_x.getTextureData());
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, neg_x.getTextureData());
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pos_y.getTextureData());
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, neg_y.getTextureData());
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pos_z.getTextureData());
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_ARB, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, neg_z.getTextureData());
 	//set filtering modes for scaling up and down
 	glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP_ARB, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -61,7 +61,7 @@ void CubeMap::update()
 {
     glBindTexture(GL_TEXTURE_CUBE_MAP_ARB, textureObject);
     int i = 0;
-//	for( vector<CaptureRef>::iterator cIt = mCaptures.begin(); cIt != mCaptures.end(); ++cIt )
+	for( vector<ofVideoGrabber>::iterator cIt = mCaptures.begin(); cIt != mCaptures.end(); ++cIt )
     {
         int GLCubeDir = -1;
         if( (*cIt)->checkNewFrame() )
@@ -97,9 +97,9 @@ void CubeMap::update()
     }
 }
 
-void CubeMap::flipSurface(Surface8u & surf)
+void CubeMap::flipSurface(ofTexture & surf)
 {
-    unsigned char* data = surf.getData();
+    unsigned char* data = surf.getTextureData();
     
     int w = surf.getRowBytes();
     int h = surf.getHeight();
