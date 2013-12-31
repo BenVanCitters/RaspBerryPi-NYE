@@ -85,9 +85,7 @@ void CubeMap::update()
                     GLCubeDir = GL_TEXTURE_CUBE_MAP_POSITIVE_Z_ARB;
                     break;                
             }
-            
-
-		}
+        }
         i++;
     }
 }
