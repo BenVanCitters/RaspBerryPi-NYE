@@ -1,4 +1,4 @@
-#include "testApp.h"
+#include "chbp12App.h"
 
 /*
  This code demonstrates the difference between using an ofMesh and an ofVboMesh.
@@ -12,27 +12,27 @@
  vertices, or texture coordinates.
  */
 //--------------------------------------------------------------
-void testApp::addFace(ofMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c) {
+void chbp12App::addFace(ofMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c) {
 	mesh.addVertex(a);
 	mesh.addVertex(b);
 	mesh.addVertex(c);
 }
 
 //--------------------------------------------------------------
-void testApp::addFace(ofMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c, ofVec3f d) {
+void chbp12App::addFace(ofMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c, ofVec3f d) {
 	addFace(mesh, a, b, c);
 	addFace(mesh, a, c, d);
 }
 
 //--------------------------------------------------------------
-void testApp::addTexCoords(ofMesh& mesh, ofVec2f a, ofVec2f b, ofVec2f c) {
+void chbp12App::addTexCoords(ofMesh& mesh, ofVec2f a, ofVec2f b, ofVec2f c) {
 	mesh.addTexCoord(a);
 	mesh.addTexCoord(b);
 	mesh.addTexCoord(c);
 }
 
 //--------------------------------------------------------------
-void testApp::addTexCoords(ofMesh& mesh, ofVec2f a, ofVec2f b, ofVec2f c, ofVec2f d) {
+void chbp12App::addTexCoords(ofMesh& mesh, ofVec2f a, ofVec2f b, ofVec2f c, ofVec2f d) {
 	addTexCoords(mesh, a, b, c);
 	addTexCoords(mesh, a, c, d);
 }
@@ -42,7 +42,7 @@ void testApp::addTexCoords(ofMesh& mesh, ofVec2f a, ofVec2f b, ofVec2f c, ofVec2
  a 3d point from the current x,y image position.
  */
 //--------------------------------------------------------------
-ofVec3f testApp::getVertexFromImg(ofImage& img, int x, int y) {
+ofVec3f chbp12App::getVertexFromImg(ofImage& img, int x, int y) {
 	ofColor color = img.getColor(x, y);
 	if(color.a > 0) {
 		float z = ofMap(color.a, 0, 255, -480, 480);
@@ -53,7 +53,7 @@ ofVec3f testApp::getVertexFromImg(ofImage& img, int x, int y) {
 }
 
 //--------------------------------------------------------------
-void testApp::setup() {
+void chbp12App::setup() {
 
     #ifdef TARGET_OPENGLES
     // While this will will work on normal OpenGL as well, it is 
@@ -114,12 +114,12 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
-void testApp::update() {
+void chbp12App::update() {
 	
 }
 
 //--------------------------------------------------------------
-void testApp::draw() {
+void chbp12App::draw() {
 	ofBackgroundGradient(ofColor(64), ofColor(0));
 	cam.begin();
 	ofEnableDepthTest();
@@ -159,48 +159,48 @@ void testApp::draw() {
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void chbp12App::keyPressed(int key){
 	if(key == ' ') {
 		ofToggleFullscreen();
 	}
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void chbp12App::keyReleased(int key){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y){
+void chbp12App::mouseMoved(int x, int y){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void chbp12App::mouseDragged(int x, int y, int button){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void chbp12App::mousePressed(int x, int y, int button){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void chbp12App::mouseReleased(int x, int y, int button){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void chbp12App::windowResized(int w, int h){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
+void chbp12App::gotMessage(ofMessage msg){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void chbp12App::dragEvent(ofDragInfo dragInfo){ 
 	
 }
