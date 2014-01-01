@@ -17,7 +17,7 @@
 class BlobMesh
 {
 private:
-    static const int mMeshWidth = 180, mMeshHeight = 180;
+    static const int mMeshWidth = 40, mMeshHeight = 40;
     vector<Weight> mWeights;
     float mVertexVals[mMeshWidth][mMeshHeight];
     void init(int weightCount);
@@ -31,7 +31,7 @@ public:
     
     ofVec3f mVerts[mMeshWidth*mMeshHeight];
     ofFloatColor mVertColors[mMeshWidth*mMeshHeight];
-    ofIndexType mIndicies[mMeshWidth*mMeshHeight*6];
+    ofIndexType mIndicies[(mMeshWidth-1)*(mMeshHeight-1)*6];
 };
 
 
